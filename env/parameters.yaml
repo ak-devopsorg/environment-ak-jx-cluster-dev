@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:ak-jx-cluster/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: ananthkorlimarlabackup@gmail.com
+  token: vault:ak-jx-cluster/pipelineUser:token
+  username: ak-jx-pipeline-bot
+prow:
+  hmacToken: vault:ak-jx-cluster/prow:hmacToken

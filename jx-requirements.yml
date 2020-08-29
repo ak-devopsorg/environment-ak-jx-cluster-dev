@@ -1,35 +1,90 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/jenkins-x/jenkins-x-boot-config
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: false
-  project: ""
+  clusterName: ak-jx-cluster
+  devEnvApprovers:
+  - AnanthKorlimarla3010
+  - ak-jx-pipeline-bot
+  environmentGitOwner: ak-devopsorg
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: ak-jx-prj
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  vaultName: ak-jx-cluster
+  vaultSAName: ak-jx-cluster-vt
+  zone: us-central1-a
 environments:
-- key: dev
-- key: staging
-- key: production
+- ingress:
+    domain: 34.123.163.49.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: true
+  key: dev
+  repository: environment-ak-jx-cluster-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-ak-jx-cluster-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-ak-jx-cluster-production
+gitops: true
 ingress:
-  domain: ""
+  domain: 34.123.163.49.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
-    production: false
+    production: true
 kaniko: true
-secretStorage: local
+repository: nexus
+secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://logs-ak-jx-cluster-1aad7cb2b3bb
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://reports-ak-jx-cluster-1aad7cb2b3bb
   repository:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://repository-ak-jx-cluster-1aad7cb2b3bb
+vault:
+  bucket: vault-ak-jx-cluster-1aad7cb2b3bb
+  key: crypto-key-ak-jx-cluster-1aad7cb2b3bb
+  keyring: keyring-ak-jx-cluster-1aad7cb2b3bb
+  name: ak-jx-cluster
+  serviceAccount: ak-jx-cluster-vt
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: "master"
+  ref: v1.0.564
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: lighthouse
