@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: ak-devopsorg
+  repo: go-http-quickstart
+  url: https://github.com/ak-devopsorg/go-http-quickstart.git
+  version: ""
+  versionURL: ""

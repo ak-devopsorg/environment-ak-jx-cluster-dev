@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: ak-devopsorg
+    provider: github
+    repository: go-http-quickstart
+  name: ak-devopsorg-go-http-quickstart
+spec:
+  description: Imported application for ak-devopsorg/go-http-quickstart
+  httpCloneURL: https://github.com/ak-devopsorg/go-http-quickstart.git
+  org: ak-devopsorg
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: go-http-quickstart
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/ak-devopsorg/go-http-quickstart.git
